@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import injectContext from "./store/appContext";
 
 import App from "./views/App";
+import SignIn from "./views/signin"
 
 const Layout = () => {
     const basename = "/" || "";
@@ -12,7 +13,7 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <Switch>
                     <Route exact path="/">
-                        <App />
+                        <SignIn />
                     </Route>
                 </Switch>
             </BrowserRouter>
