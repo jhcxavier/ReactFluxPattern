@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import injectContext from "./store/appContext";
+
 import App from "./views/App";
 
 const Layout = () => {
@@ -17,3 +19,4 @@ const Layout = () => {
         </div>
     )
 }
+export default injectContext(Layout);
