@@ -1,6 +1,8 @@
 import axios from 'axios';
-
-const getState = ({ getStore, getActions, setStore }) => {
+import React from "react";
+// import { useHistory } from "react-router-dom";
+// let history = useHistory()
+const getState = ({ getStore, getActions, setStore, setHistory }) => {
     return {
         store: {
             contacts: [],
@@ -8,7 +10,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             currentUser: null,
 
         },
-
         actions: {
             login: (email, password) => {
                 axios.post("http://localhost:4002/login", {

@@ -105,8 +105,8 @@ export default function SignIn(props) {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={async () => {
-                            await actions.login(state.email, state.password)
+                        onClick={() => {
+                            actions.login(state.email, state.password)
                         }}
                     >
                         Sign In
