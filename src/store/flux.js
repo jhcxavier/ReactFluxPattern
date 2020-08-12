@@ -1,5 +1,4 @@
 import axios from 'axios';
-import getContacts from './requests';
 
 const getState = ({ getStore, getActions, setStore }) => {
     return {
@@ -23,7 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                 }).then(data => {
                     setStore({ token: data.token, currentUser: data.username })
-                    console.log(getStore().token)
 
                 }).then(() => {
                     getActions().getContacts(getStore().token)
@@ -55,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
                     .then((data) => {
                         setStore({ contacts: data })
-                        console.log(getStore().contacts)
+                        console.log("contacts", getStore().contacts)
 
                     }).catch(e => console.error(e))
             }

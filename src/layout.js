@@ -4,6 +4,7 @@ import injectContext from "./store/appContext";
 
 import App from "./views/App";
 import SignIn from "./views/signin"
+import Dashboard from "./views/dashboard";
 
 const Layout = () => {
     const basename = "/" || "";
@@ -14,6 +15,9 @@ const Layout = () => {
                 <Switch>
                     <Route exact path="/">
                         <SignIn />
+                    </Route>
+                    <Route path="/dashboard">
+                        <Dashboard />
                     </Route>
                 </Switch>
             </BrowserRouter>

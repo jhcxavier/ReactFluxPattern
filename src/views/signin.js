@@ -1,5 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { Context } from '../store/appContext';
+import PropTypes from "prop-types";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -47,10 +49,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
     const classes = useStyles();
     const { actions, store } = useContext(Context)
     const [state, setState] = useState({ email: "", password: "" })
+    const history = useHistory();
+    // let next = history.push("/dashboard")
+    useEffect(() => {
+        if (store.token !== null) {
+            history.push("/dashboard")
+        }
+    }, [store.token])
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -91,13 +100,13 @@ export default function SignIn() {
                         label="Remember me"
                     />
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={() => {
-                            actions.login(state.email, state.password)
+                        onClick={async () => {
+                            await actions.login(state.email, state.password)
                         }}
                     >
                         Sign In
@@ -122,3 +131,6 @@ export default function SignIn() {
         </Container>
     );
 }
+SignIn.propTypes = {
+    history: PropTypes.object,
+};
