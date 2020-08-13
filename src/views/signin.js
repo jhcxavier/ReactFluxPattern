@@ -61,6 +61,7 @@ export default function SignIn(props) {
         }
     }, [store.token])
     return (
+
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
