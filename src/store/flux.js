@@ -55,6 +55,26 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                         setStore({ contacts: data })
                         console.log("contacts", getStore().contacts)
                     }).catch(e => console.error(e))
+            },
+            addContact: (firstName, lastName, company, email, phone) => {
+                axios({
+                    method: "POST",
+                    headers: {
+                        "Authorization": `JWT ${getStore().token}`,
+                        "Access": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    url: "http://localhost:4002/contacts",
+                    data: {
+                        firstName: "Joee2",
+                        lastName: "Doee",
+                        company: "NCCII",
+                        email: "joee@ncci.com",
+                        phone: 55599995555
+                    }
+                }).then(() => {
+                    getActions().getContacts()
+                })
             }
         }
     }

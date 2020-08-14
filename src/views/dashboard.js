@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
     const classes = useStyles();
     const [search, setSearch] = useState("")
-    const [addContact, setAddContact] = useState("")
+    const [showAddContact, setShowAddContact] = useState(false)
     return (
         <Container component="main" className="text-center">
             {/* <div className="container"> */}
@@ -91,13 +91,14 @@ const Dashboard = () => {
                     </NativeSelect>
                 </FormControl>
                 <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
-                    setAddContact(<AddContact />)
-
+                    setShowAddContact(!showAddContact)
                 }}>
-                    Primary
+                    Add Contact
                 </Button>
             </form>
-            <div>{addContact}</div>
+            <div>{showAddContact && <AddContact closeAddContact={() => {
+                setShowAddContact(false)
+            }} />}</div>
             <ListOfContacts />
         </Container>
     )

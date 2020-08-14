@@ -34,10 +34,10 @@ const ListOfContacts = () => {
                                 <td>{contact.phone}</td>
                                 <td>{contact.create_date}</td>
                                 <td>
-                                    <i id='tooltip' className="fas fa-edit p-2"></i>
-                                    <i className="fas fa-users-cog p-2"></i>
-                                    <i className="fas fa-file-download p-2"></i>
-                                    <i className="far fa-trash-alt p-2" ></i>
+                                    <i id='tooltip' className="fas fa-edit p-2" SameSite={"None"}></i>
+                                    <i className="fas fa-users-cog p-2" SameSite={"None"}></i>
+                                    <i className="fas fa-file-download p-2" SameSite={"None"}></i>
+                                    <i className="far fa-trash-alt p-2" SameSite={"None"}></i>
                                 </td>
                             </tr>
                         )

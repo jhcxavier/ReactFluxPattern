@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from '../store/appContext';
 
-const AddContact = () => {
+
+const AddContact = ({ closeAddContact }) => {
+    const { actions, store } = useContext(Context)
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -35,11 +38,16 @@ const AddContact = () => {
                     </div>
                 </div>
                 <div className="row m-1 d-flex justify-content-end">
-                    <button type="submit" className="btn btn-primary m-1" onClick={(e) => {
+                    <button type="button" className="btn btn-primary m-1" onClick={(e) => {
                         setValue("")
+                        closeAddContact();
                         // e.preventDefault()
                     }}>Cancel</button>
-                    <button type="submit" className="btn btn-primary m-1">Submit</button>
+                    <button type="button" className="btn btn-primary m-1" onClick={() => {
+                        console.log(value.firstName)
+                        actions.addContact(value.firstName, value.lastName, value.company, value.email, value.phone)
+                        // actions.getContacts(store.token)
+                    }}>Submit</button>
                 </div>
             </form>
         </div>
