@@ -65,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
     const classes = useStyles();
     const [search, setSearch] = useState("")
+    const [addContact, setAddContact] = useState("")
     return (
         <Container component="main" className="text-center">
             {/* <div className="container"> */}
@@ -88,16 +89,13 @@ const Dashboard = () => {
                         <option value={30}>Last Name</option>
                     </NativeSelect>
                 </FormControl>
-
-
-                <Button variant="outlined" color="primary" className="ml-5">
+                <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
+                    setAddContact(<AddContact />)
+                }}>
                     Primary
                 </Button>
-
-
             </form>
-            {/* </div> */}
-            <AddContact />
+            <div>{addContact}</div>
         </Container>
     )
 }

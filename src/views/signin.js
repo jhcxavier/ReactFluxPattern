@@ -53,6 +53,7 @@ export default function SignIn(props) {
     const classes = useStyles();
     const { actions, store } = useContext(Context)
     const [state, setState] = useState({ email: "", password: "" })
+
     const history = useHistory();
     // let next = history.push("/dashboard")
     useEffect(() => {
