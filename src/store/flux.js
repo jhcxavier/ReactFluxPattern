@@ -52,7 +52,8 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                 })
                     .then(response => response.data)
                     .then((data) => {
-                        setStore({ contacts: data })
+                        let arr = data.slice().reverse()
+                        setStore({ contacts: arr })
                         console.log("contacts", getStore().contacts)
                     }).catch(e => console.error(e))
             },
@@ -66,10 +67,10 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     },
                     url: "http://localhost:4002/contacts",
                     data: {
-                        firstName: "Joee2",
-                        lastName: "Doee",
-                        company: "NCCII",
-                        email: "joee@ncci.com",
+                        firstName: firstName,
+                        lastName: lastName,
+                        company: company,
+                        email: email,
                         phone: 55599995555
                     }
                 }).then(() => {
