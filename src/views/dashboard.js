@@ -11,6 +11,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import AddContact from '../components/addContact';
+import ListOfContacts from '../components/listOfContacts';
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -96,6 +97,7 @@ const Dashboard = () => {
                 </Button>
             </form>
             <div>{addContact}</div>
+            <ListOfContacts />
         </Container>
     )
 }
