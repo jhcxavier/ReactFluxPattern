@@ -10,6 +10,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
+import AddContact from '../components/addContact';
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-            width: '25ch',
+            width: '20ch',
             // flexDirection: "row"
         },
     },
@@ -70,7 +71,7 @@ const Dashboard = () => {
             <h1>Hello Dashboard</h1>
             <form className={classes.root} noValidate autoComplete="off">
 
-                <FormControl className={classes.margin}>
+                <FormControl className={classes.margin, "mr-5"}>
                     <InputLabel id="demo-mutiple-name-label">Search By</InputLabel>
                     <NativeSelect
                         labelid="demo-mutiple-name-label"
@@ -89,13 +90,14 @@ const Dashboard = () => {
                 </FormControl>
 
 
-                <Button variant="outlined" color="primary" ml="5">
+                <Button variant="outlined" color="primary" className="ml-5">
                     Primary
-                    </Button>
+                </Button>
 
 
             </form>
             {/* </div> */}
+            <AddContact />
         </Container>
     )
 }
