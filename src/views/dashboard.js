@@ -92,6 +92,7 @@ const Dashboard = () => {
                 </FormControl>
                 <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
                     setAddContact(<AddContact />)
+
                 }}>
                     Primary
                 </Button>

@@ -51,11 +51,9 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     headers
                 })
                     .then(response => response.data)
-
                     .then((data) => {
                         setStore({ contacts: data })
                         console.log("contacts", getStore().contacts)
-
                     }).catch(e => console.error(e))
             }
         }

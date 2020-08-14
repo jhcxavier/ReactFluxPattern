@@ -33,7 +33,7 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-
+            console.log("from context")
             // state.actions.getContacts()
 
         }, []);

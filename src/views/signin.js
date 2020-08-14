@@ -59,6 +59,7 @@ export default function SignIn(props) {
     useEffect(() => {
         if (store.token !== null) {
             history.push("/dashboard")
+            actions.getContacts(store.token)
         }
     }, [store.token])
     return (
