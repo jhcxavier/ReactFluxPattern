@@ -8,6 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
+import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -44,17 +46,18 @@ const BootstrapInput = withStyles((theme) => ({
     },
 }))(InputBase);
 
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
             width: '25ch',
-
-
+            // flexDirection: "row"
         },
     },
     margin: {
-        margin: theme.spacing(1),
+        marginLeft: theme.spacing(1),
     },
 }));
 
@@ -66,13 +69,17 @@ const Dashboard = () => {
             {/* <div className="container"> */}
             <h1>Hello Dashboard</h1>
             <form className={classes.root} noValidate autoComplete="off">
+
                 <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="demo-customized-select-native">Search By</InputLabel>
+                    <InputLabel id="demo-mutiple-name-label">Search By</InputLabel>
                     <NativeSelect
-                        id="demo-customized-select-native"
-                        value={null}
+                        labelid="demo-mutiple-name-label"
+                        id="demo-mutiple-name"
+                        multiple
+                        value={undefined}
                         onChange={(e) => { setSearch(e.target.value) }}
-                        input={<BootstrapInput />}
+                    // input={<Input />}
+                    // MenuProps={MenuProps}
                     >
                         <option aria-label="None" value="" />
                         <option value={10}>Email</option>
@@ -80,9 +87,12 @@ const Dashboard = () => {
                         <option value={30}>Last Name</option>
                     </NativeSelect>
                 </FormControl>
-                <TextField id="standard-basic" label="Standard" />
-                <TextField id="filled-basic" label="Filled" variant="filled" />
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+
+
+                <Button variant="outlined" color="primary" ml="5">
+                    Primary
+                    </Button>
+
 
             </form>
             {/* </div> */}
