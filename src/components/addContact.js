@@ -46,6 +46,7 @@ const AddContact = ({ closeAddContact }) => {
                     <button type="button" className="btn btn-primary m-1" onClick={() => {
                         console.log(value.firstName)
                         actions.addContact(value.firstName, value.lastName, value.company, value.email, value.phone)
+                        closeAddContact()
                         // actions.getContacts(store.token)
                     }}>Submit</button>
                 </div>
