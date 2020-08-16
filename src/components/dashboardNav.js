@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Context } from '../store/appContext';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -12,7 +13,6 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import AddContact from '../components/addContact';
 import ListOfContacts from '../components/listOfContacts';
-import DashboardNav from '../components/dashboardNav';
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -64,16 +64,64 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Dashboard = () => {
+const DashboardNav = () => {
     const classes = useStyles();
+    const { store } = useContext(Context)
     const [search, setSearch] = useState("")
+    const [inputSearch, setInputSearch] = useState("")
     const [showAddContact, setShowAddContact] = useState(false)
-    return (
-        <Container component="main" className="text-center">
 
-            <DashboardNav />
-            <ListOfContacts />
-        </Container>
+
+    if (search == "email") {
+        let email = store.contacts.filter((contact) => {
+            if (contact.email == inputSearch)
+                return contact;
+        })
+        console.log("result", email)
+    }
+
+
+    return (
+
+        <>
+            {/* <div className="container"> */}
+            <h1>Hello Dashboard</h1>
+            <form className={classes.root} noValidate autoComplete="off">
+
+                <FormControl className={classes.margin, "mr-5"}>
+                    <InputLabel id="demo-mutiple-name-label">Search By</InputLabel>
+
+                    <NativeSelect
+                        labelid="demo-mutiple-name-label"
+                        id="demo-mutiple-name"
+                        multiple
+                        value={undefined}
+                        onChange={(e) => { setSearch(e.target.value) }}
+                    // input={<Input />}
+                    // MenuProps={MenuProps}
+                    >
+                        <option aria-label="None" value="" />
+                        <option value="email">Email</option>
+                        <option value="phone">Phone</option>
+                        <option value="lastName">Last Name</option>
+                    </NativeSelect>
+                </FormControl>
+                <TextField id="standard-basic" label="Search" onChange={(e) => { setInputSearch(e.target.value) }} />
+                <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
+
+                }}>
+                    Search
+                </Button>
+                <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
+                    setShowAddContact(!showAddContact)
+                }}>
+                    Add Contact
+                </Button>
+            </form>
+            <div>{showAddContact && <AddContact closeAddContact={() => {
+                setShowAddContact(false)
+            }} />}</div>
+        </>
     )
 }
-export default Dashboard; 
+export default DashboardNav; 
