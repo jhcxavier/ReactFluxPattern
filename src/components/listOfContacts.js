@@ -4,13 +4,7 @@ import AddContact from "./addContact";
 import Contact from "./contact";
 
 const ListOfContacts = () => {
-    const { actions, store } = useContext(Context)
-    const [editContact, setEditContact] = useState(false)
-    const today = new Date();
-    // let time = today.getMonth + "/" + today.getDay + "/" + today.getFullYear + " " + today.getHours() + ":" + today.getMinutes()
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    console.log(store.contacts)
-    console.log("token", store.token)
+    const { store } = useContext(Context)
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
@@ -28,13 +22,8 @@ const ListOfContacts = () => {
 
                 <tbody className="tbody-dark">
                     {store.contacts.map((contact, index) => (
-
-
                         <Contact key={index} data={contact} />
-
-
                     ))}
-
                 </tbody>
             </table>
         </div>

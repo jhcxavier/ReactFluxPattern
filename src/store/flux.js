@@ -96,6 +96,19 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                 }).then(() => {
                     getActions().getContacts()
                 })
+            },
+            deleteContact: (id) => {
+                axios({
+                    method: "delete",
+                    headers: {
+                        "Authorization": `JWT ${getStore().token}`,
+                        "Access": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    url: `http://localhost:4002/contact/${id}`
+                }).then(() => {
+                    getActions().getContacts()
+                })
             }
         }
     }

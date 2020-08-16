@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from '../store/appContext';
 
-import AddContact from "./addContact";
-
 const Contact = ({ data }) => {
     const { actions } = useContext(Context)
     const [value, setValue] = useState({
@@ -44,7 +42,9 @@ const Contact = ({ data }) => {
                             }}></i>
                             <i className="fas fa-users-cog p-2" samesite={"None"}></i>
                             <i className="fas fa-file-download p-2" samesite={"None"}></i>
-                            <i className="far fa-trash-alt p-2" samesite={"None"} type="button"></i>
+                            <i className="far fa-trash-alt p-2" samesite={"None"} type="button" onClick={() => {
+                                actions.deleteContact(data._id)
+                            }}></i>
                         </td></>)}
             </tr>
         </>
