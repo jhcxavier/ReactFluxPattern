@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Context } from '../store/appContext';
+import PropTypes from "prop-types";
 
 
 const AddContact = ({ closeAddContact }) => {
@@ -55,3 +56,6 @@ const AddContact = ({ closeAddContact }) => {
     )
 }
 export default AddContact;
+AddContact.propType = {
+    match: PropTypes.object
+}

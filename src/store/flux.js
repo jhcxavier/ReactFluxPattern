@@ -71,7 +71,27 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                         lastName: lastName,
                         company: company,
                         email: email,
-                        phone: 55599995555
+                        phone: phone
+                    }
+                }).then(() => {
+                    getActions().getContacts()
+                })
+            },
+            editContact: (firstName, lastName, company, email, phone, id) => {
+                axios({
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `JWT ${getStore().token}`,
+                        "Access": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    url: `http://localhost:4002/contact/${id}`,
+                    data: {
+                        firstName: firstName,
+                        lastName: lastName,
+                        company: company,
+                        email: email,
+                        phone: phone
                     }
                 }).then(() => {
                     getActions().getContacts()

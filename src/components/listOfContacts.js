@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from '../store/appContext';
+import AddContact from "./addContact";
+import Contact from "./contact";
 
 const ListOfContacts = () => {
     const { actions, store } = useContext(Context)
+    const [editContact, setEditContact] = useState(false)
     const today = new Date();
     // let time = today.getMonth + "/" + today.getDay + "/" + today.getFullYear + " " + today.getHours() + ":" + today.getMinutes()
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -24,24 +27,14 @@ const ListOfContacts = () => {
                 </thead>
 
                 <tbody className="tbody-dark">
-                    {store.contacts.map((contact, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{contact.firstName}</td>
-                                <td>{contact.lastName}</td>
-                                <td>{contact.company}</td>
-                                <td>{contact.email}</td>
-                                <td>{contact.phone}</td>
-                                <td>{contact.create_date}</td>
-                                <td>
-                                    <i id='tooltip' className="fas fa-edit p-2" SameSite={"None"}></i>
-                                    <i className="fas fa-users-cog p-2" SameSite={"None"}></i>
-                                    <i className="fas fa-file-download p-2" SameSite={"None"}></i>
-                                    <i className="far fa-trash-alt p-2" SameSite={"None"}></i>
-                                </td>
-                            </tr>
-                        )
-                    })}
+                    {store.contacts.map((contact, index) => (
+
+
+                        <Contact key={index} data={contact} />
+
+
+                    ))}
+
                 </tbody>
             </table>
         </div>
