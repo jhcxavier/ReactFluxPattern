@@ -11,7 +11,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -50,17 +49,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn(props) {
+    // material UI styles
     const classes = useStyles();
+    // accessing actions and store on flux.js
     const { actions, store } = useContext(Context)
+    // updating the state for login
     const [state, setState] = useState({ email: "", password: "" })
-
+    // navigation
     const history = useHistory();
-    // let next = history.push("/dashboard")
+
+    // useEffect is being used to re render the page if store.token is not null.
+    // It means that the login was successful and move to the next page, also we are updating contacts to have the list of ready.
     useEffect(() => {
         if (store.token !== null) {
             history.push("/dashboard")
             actions.getContacts(store.token)
         }
+        // [store.token] is passed beacuse each time that token is updated we keep logged in or not.
     }, [store.token])
     return (
 
@@ -83,7 +88,7 @@ export default function SignIn(props) {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
-                        autoFocus
+                        // updating the state of email input
                         onChange={(e) => { setState({ ...state, email: e.target.value }) }}
                     />
                     <TextField
@@ -96,6 +101,7 @@ export default function SignIn(props) {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        // updating the state of password
                         onChange={(e) => { setState({ ...state, password: e.target.value }) }}
                     />
                     <FormControlLabel
@@ -108,6 +114,7 @@ export default function SignIn(props) {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        // sending the email and password to login
                         onClick={() => {
                             actions.login(state.email, state.password)
                         }}

@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
 
         },
         actions: {
+            // Function that perform the login on the API
             login: (email, password) => {
                 axios.post("http://localhost:4002/login", {
                     email: email,
@@ -30,6 +31,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     console.error(error)
                 })
             },
+            // Accessing and returning contacts from the API
             getContacts: (token) => {
                 let headers = null;
                 if (token) {
@@ -56,6 +58,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                         console.log("contacts", getStore().contacts)
                     }).catch(e => console.error(e))
             },
+            // Adding contact to the API
             addContact: (firstName, lastName, company, email, phone) => {
                 axios({
                     method: "POST",
@@ -76,6 +79,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     getActions().getContacts()
                 })
             },
+            // Updating Contacts to the API
             editContact: (firstName, lastName, company, email, phone, id) => {
                 axios({
                     method: "PUT",
@@ -96,6 +100,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     getActions().getContacts()
                 })
             },
+            // Deleting contacts on the API
             deleteContact: (id) => {
                 axios({
                     method: "delete",
@@ -109,8 +114,8 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     getActions().getContacts()
                 })
             },
+            // Setting the search criteria on the store
             saveSearch: (typeSearch) => {
-
                 setStore({ searchCriteria: typeSearch })
             }
 

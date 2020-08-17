@@ -65,18 +65,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+// Dashboard rendering page
 const Dashboard = () => {
-    const { store } = useContext(Context)
-    const classes = useStyles();
-    const [search, setSearch] = useState("")
-    const [showAddContact, setShowAddContact] = useState(false)
     return (
         <>
             <Container component="main" className="text-center">
-
                 <DashboardNav />
                 <ListOfContacts />
-
             </Container>
         </>
     )

@@ -4,7 +4,7 @@ import './style/index.css';
 import Layout from "./layout";
 import * as serviceWorker from './serviceWorker';
 
-
+// passing the component to the HTML page to be rendered.
 ReactDOM.render(
   <React.StrictMode>
     <Layout />
