@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 
 
 const AddContact = ({ closeAddContact }) => {
+    // Enabling access to the actions in flux with useContext()
     const { actions, store } = useContext(Context)
+    // Setting the state for a new contact with useState()
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -21,29 +23,35 @@ const AddContact = ({ closeAddContact }) => {
             <form className="container border mt-2">
                 <div className="row">
                     <div className="col m-2">
+                        {/* Updating the state */}
                         <input type="text" className="form-control" placeholder="First name" onChange={(e) => setValue({ ...value, firstName: e.target.value })} />
                     </div>
                     <div className="col m-2">
+                        {/* Updating the state */}
                         <input type="text" className="form-control" placeholder="Last name" onChange={(e) => setValue({ ...value, lastName: e.target.value })} />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-5 m-2">
+                        {/* Updating the state */}
                         <input type="text" className="form-control" placeholder="Company" onChange={(e) => setValue({ ...value, company: e.target.value })} />
                     </div>
                     <div className="col m-2">
+                        {/* Updating the state */}
                         <input type="text" className="form-control" placeholder="Email" onChange={(e) => setValue({ ...value, email: e.target.value })} />
                     </div>
                     <div className="col m-2">
+                        {/* Updating the state */}
                         <input type="text" className="form-control" placeholder="Phone" onChange={(e) => setValue({ ...value, phone: e.target.value })} />
                     </div>
                 </div>
                 <div className="row m-1 d-flex justify-content-end">
+                    {/*Cleaning and closing the state */}
                     <button type="button" className="btn btn-primary m-1" onClick={(e) => {
                         setValue("")
                         closeAddContact();
-                        // e.preventDefault()
                     }}>Cancel</button>
+                    {/* Passing the updated state to the function addContact in flux. Which will create a new contact on the API */}
                     <button type="button" className="btn btn-primary m-1" onClick={() => {
                         console.log(value.firstName)
                         actions.addContact(value.firstName, value.lastName, value.company, value.email, value.phone)

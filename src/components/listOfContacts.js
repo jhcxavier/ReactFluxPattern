@@ -3,6 +3,7 @@ import { Context } from '../store/appContext';
 import Contact from "./contact";
 
 const ListOfContacts = () => {
+    // enabling access to the store in flux
     const { store } = useContext(Context)
 
     return (
@@ -21,8 +22,11 @@ const ListOfContacts = () => {
                 </thead>
 
                 <tbody className="tbody-dark">
+                    {/* If there is no search criteria the map goes through the array of contacts */}
                     {store.searchCriteria.type === "" ? store.contacts.map((contact) => (
                         <Contact key={contact._id} data={contact} />
+                        // If there is any selected search criteria we are going to filter by the data stored and return
+                        // any contact that matches with the selected data usign filter().map().
                     )) : store.contacts.filter((contact) => {
 
                         let type = store.searchCriteria.type

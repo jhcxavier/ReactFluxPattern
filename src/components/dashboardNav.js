@@ -64,41 +64,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DashboardNav = () => {
+    // Material ui styles
     const classes = useStyles();
+    // accessing actions in flux
     const { store, actions } = useContext(Context)
+    // setting paremeter for search contact
     const [search, setSearch] = useState("")
-    const [testEmail, setTestEmail] = useState([])
+    //inserting the data the should be found on the list of contact
     const [inputSearch, setInputSearch] = useState("")
+    // opening space to add a new contact
     const [showAddContact, setShowAddContact] = useState(false)
 
-
-    // if (search === "email") {
-    //     let email = store.contacts.filter((contact) => {
-    //         if (contact.email === inputSearch)
-    //             return contact;
-    //     })
-
-    // }
-
-    // console.log(testEmail)
     return (
 
         <>
-            {/* <div className="container"> */}
+
             <h1>Hello Dashboard</h1>
             <form className={classes.root} noValidate autoComplete="off">
 
                 <FormControl className={classes.margin, "mr-5"}>
                     <InputLabel id="demo-mutiple-name-label">Search By</InputLabel>
-
+                    {/* Setting the option for searching contact */}
                     <NativeSelect
                         labelid="demo-mutiple-name-label"
                         id="demo-mutiple-name"
                         multiple
                         value={undefined}
+                        // updating the state with the selected option
                         onChange={(e) => { setSearch(e.target.value) }}
-                    // input={<Input />}
-                    // MenuProps={MenuProps}
                     >
                         <option aria-label="None" value="" />
                         <option value="email">Email</option>
@@ -106,22 +99,24 @@ const DashboardNav = () => {
                         <option value="lastName">Last Name</option>
                     </NativeSelect>
                 </FormControl>
-
+                {/* Insert the value that should match on the contact list */}
                 <TextField id="standard-basic" label="Search" onChange={(e) => { setInputSearch(e.target.value) }} />
-
+                {/* sending the option and the value for searching */}
                 <Button type="button" variant="outlined" color="primary" className="ml-5" onClick={() =>
                     actions.saveSearch({ "type": search, "valueType": inputSearch })
 
                 }>
                     Search
                 </Button>
-
+                {/* Opening the fields to add contact */}
                 <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
                     setShowAddContact(!showAddContact)
                 }}>
                     Add Contact
                 </Button>
             </form>
+            {/* Conditional rendering for opnening fields to add contact and sending the function to close fields
+            which will be triggered on addContacts.js lines 52 and 58 */}
             <div>{showAddContact && <AddContact closeAddContact={() => {
                 setShowAddContact(false)
             }} />}</div>
