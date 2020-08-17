@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Context } from '../store/appContext';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -65,15 +66,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Dashboard = () => {
+    const { store } = useContext(Context)
     const classes = useStyles();
     const [search, setSearch] = useState("")
     const [showAddContact, setShowAddContact] = useState(false)
     return (
-        <Container component="main" className="text-center">
+        <>
+            <Container component="main" className="text-center">
 
-            <DashboardNav />
-            <ListOfContacts />
-        </Container>
+                <DashboardNav />
+
+
+                <ListOfContacts />
+
+            </Container>
+        </>
     )
 }
 export default Dashboard; 

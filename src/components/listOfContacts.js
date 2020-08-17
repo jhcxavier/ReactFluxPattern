@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Context } from '../store/appContext';
-import AddContact from "./addContact";
 import Contact from "./contact";
 
 const ListOfContacts = () => {
@@ -21,7 +20,9 @@ const ListOfContacts = () => {
                 </thead>
 
                 <tbody className="tbody-dark">
-                    {store.contacts.map((contact, index) => (
+                    {store.search.length > 0 ? store.search.map((contact, index) => (
+                        <Contact key={index} data={contact} />
+                    )) : store.contacts.map((contact, index) => (
                         <Contact key={index} data={contact} />
                     ))}
                 </tbody>

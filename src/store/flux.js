@@ -1,13 +1,19 @@
 import axios from 'axios';
-import React from "react";
-// import { useHistory } from "react-router-dom";
-// let history = useHistory()
+
 const getState = ({ getStore, getActions, setStore, setHistory }) => {
     return {
         store: {
             contacts: [],
             token: null,
             currentUser: null,
+            search: [{
+                "company": "NCCIxx",
+                "create_date": "2020-08-15T02:13:28.807Z",
+                "email": "first@nxxcci.com",
+                "firstName": "Firstxxx",
+                "lastName": "Last xxx",
+                "phone": 22
+            }]
 
         },
         actions: {
@@ -108,6 +114,13 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     url: `http://localhost:4002/contact/${id}`
                 }).then(() => {
                     getActions().getContacts()
+                })
+            },
+            searchByEmail: (email) => {
+                let test = getStore.contacts.filter(contact => {
+                    if (contact.email === email) {
+                        setStore({ search: email })
+                    }
                 })
             }
         }
