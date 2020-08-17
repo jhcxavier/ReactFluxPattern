@@ -6,14 +6,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
             contacts: [],
             token: null,
             currentUser: null,
-            search: [{
-                "company": "NCCIxx",
-                "create_date": "2020-08-15T02:13:28.807Z",
-                "email": "first@nxxcci.com",
-                "firstName": "Firstxxx",
-                "lastName": "Last xxx",
-                "phone": 22
-            }]
+            searchCriteria: { type: "", valueType: "" }
 
         },
         actions: {
@@ -116,13 +109,12 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     getActions().getContacts()
                 })
             },
-            searchByEmail: (email) => {
-                let test = getStore.contacts.filter(contact => {
-                    if (contact.email === email) {
-                        setStore({ search: email })
-                    }
-                })
+            saveSearch: (typeSearch) => {
+
+                setStore({ searchCriteria: typeSearch })
             }
+
+
         }
     }
 }

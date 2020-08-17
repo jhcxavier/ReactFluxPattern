@@ -75,8 +75,6 @@ const Dashboard = () => {
             <Container component="main" className="text-center">
 
                 <DashboardNav />
-
-
                 <ListOfContacts />
 
             </Container>

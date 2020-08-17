@@ -72,15 +72,15 @@ const DashboardNav = () => {
     const [showAddContact, setShowAddContact] = useState(false)
 
 
-    if (search === "email") {
-        let email = store.contacts.filter((contact) => {
-            if (contact.email === inputSearch)
-                return contact;
-        })
+    // if (search === "email") {
+    //     let email = store.contacts.filter((contact) => {
+    //         if (contact.email === inputSearch)
+    //             return contact;
+    //     })
 
-    }
+    // }
 
-    console.log(testEmail)
+    // console.log(testEmail)
     return (
 
         <>
@@ -106,12 +106,16 @@ const DashboardNav = () => {
                         <option value="lastName">Last Name</option>
                     </NativeSelect>
                 </FormControl>
+
                 <TextField id="standard-basic" label="Search" onChange={(e) => { setInputSearch(e.target.value) }} />
+
                 <Button type="button" variant="outlined" color="primary" className="ml-5" onClick={() =>
-                    actions.searchByEmail(inputSearch)
+                    actions.saveSearch({ "type": search, "valueType": inputSearch })
+
                 }>
                     Search
                 </Button>
+
                 <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
                     setShowAddContact(!showAddContact)
                 }}>

@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from '../store/appContext';
 import Contact from "./contact";
 
 const ListOfContacts = () => {
     const { store } = useContext(Context)
+
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
@@ -20,11 +21,23 @@ const ListOfContacts = () => {
                 </thead>
 
                 <tbody className="tbody-dark">
-                    {store.search.length > 0 ? store.search.map((contact, index) => (
-                        <Contact key={index} data={contact} />
-                    )) : store.contacts.map((contact, index) => (
-                        <Contact key={index} data={contact} />
+                    {store.searchCriteria.type === "" ? store.contacts.map((contact) => (
+                        <Contact key={contact._id} data={contact} />
+                    )) : store.contacts.filter((contact) => {
+
+                        let type = store.searchCriteria.type
+                        let value = store.searchCriteria.valueType;
+
+                        if (type == "email") {
+                            return contact.email.includes(value);
+                        } else if (type == "phone") {
+                            return contact.phone == Number(value);
+                        }
+                        return true
+                    }).map((contact) => (
+                        <Contact key={contact._id} data={contact} />
                     ))}
+
                 </tbody>
             </table>
         </div>
