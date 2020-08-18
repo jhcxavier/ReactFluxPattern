@@ -20,28 +20,36 @@ const Contact = ({ data }) => {
         <>
             <tr>
                 {/* of editContact is true we are going to render the input and button to save the updated contact */}
-                {editContact ? (<><td><input type="text" defaultValue={data.firstName} onChange={(e) => { setValue({ ...value, firstName: e.target.value }) }} /></td>
-                    <td><input type="text" defaultValue={data.lastName} onChange={(e) => { setValue({ ...value, lastName: e.target.value }) }} /></td>
-                    <td><input type="text" defaultValue={data.company} onChange={(e) => { setValue({ ...value, company: e.target.value }) }} /></td>
-                    <td><input type="text" defaultValue={data.email} onChange={(e) => { setValue({ ...value, email: e.target.value }) }} /></td>
-                    <td><input type="text" defaultValue={data.phone} onChange={(e) => { setValue({ ...value, phone: e.target.value }) }} /></td>
-                    <td>{""}</td>
-                    <td>
-                        {/* Here we are passing to editContact function in flux the updated contact to the API */}
-                        <i className="fas fa-check p-2" samesite={"None"} type="button" onClick={() => {
-                            actions.editContact(value.firstName, value.lastName, value.company, value.email, value.phone, data._id)
-                            // after sending we close the Edit mode
-                            setEditContact(!editContact)
-                        }}></i>
-                        {/* Cancelling the edit mode without update */}
-                        <i className="fas fa-times" type="button" onClick={() => {
-                            setEditContact(!editContact)
-                        }}></i>
-                    </td></>) :
-
-                    (
+                {editContact ? (
+                    <>
+                        <td><input type="text" defaultValue={data.firstName} onChange={
+                            (e) => { setValue({ ...value, firstName: e.target.value }) }} /></td>
+                        <td><input type="text" defaultValue={data.lastName} onChange={
+                            (e) => { setValue({ ...value, lastName: e.target.value }) }} /></td>
+                        <td><input type="text" defaultValue={data.company} onChange={
+                            (e) => { setValue({ ...value, company: e.target.value }) }} /></td>
+                        <td><input type="text" defaultValue={data.email} onChange={
+                            (e) => { setValue({ ...value, email: e.target.value }) }} /></td>
+                        <td><input type="text" defaultValue={data.phone} onChange={
+                            (e) => { setValue({ ...value, phone: e.target.value }) }} /></td>
+                        <td>{""}</td>
+                        <td>
+                            {/* Here we are passing to editContact function in flux the updated contact to the API */}
+                            <i className="fas fa-check p-2" samesite={"None"} type="button" onClick={() => {
+                                actions.editContact(value.firstName, value.lastName, value.company, value.email, value.phone, data._id)
+                                // after sending we close the Edit mode
+                                setEditContact(!editContact)
+                            }}></i>
+                            {/* Cancelling the edit mode without update */}
+                            <i className="fas fa-times" type="button" onClick={() => {
+                                setEditContact(!editContact)
+                            }}></i>
+                        </td>
+                    </>
+                ) : (
                         // This part of the ternary we are rendering the list of contact
-                        <><td>{data.firstName}</td>
+                        <>
+                            <td>{data.firstName}</td>
                             <td>{data.lastName}</td>
                             <td>{data.company}</td>
                             <td>{data.email}</td>
