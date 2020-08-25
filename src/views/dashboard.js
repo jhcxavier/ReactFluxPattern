@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { Context } from '../store/appContext';
+// import { Context } from '../store/appContext';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import FormControl from '@material-ui/core/FormControl';
+// import Select from '@material-ui/core/Select';
+// import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
-import Button from '@material-ui/core/Button';
-import { Typography } from '@material-ui/core';
-import AddContact from '../components/addContact';
+// import Button from '@material-ui/core/Button';
+// import { Typography } from '@material-ui/core';
+// import AddContact from '../components/addContact';
 import ListOfContacts from '../components/listOfContacts';
 import DashboardNav from '../components/dashboardNav';
 

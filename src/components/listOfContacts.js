@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Context } from '../store/appContext';
 import Contact from "./contact";
 
@@ -17,6 +17,7 @@ const ListOfContacts = () => {
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Created at</th>
+
                         <th scope="col">{' '}</th>
                     </tr>
                 </thead>
@@ -34,6 +35,7 @@ const ListOfContacts = () => {
 
                         // if (type == "email") {
                         return contact[type].includes(value);
+
                         // } else if (type == "phone") {
                         //     return contact.phone == Number(value);
                         // }

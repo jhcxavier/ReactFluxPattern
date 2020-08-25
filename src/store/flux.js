@@ -69,11 +69,11 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
                     },
                     url: "http://localhost:4002/contacts",
                     data: {
-                        firstName: firstName,
-                        lastName: lastName,
-                        company: company,
-                        email: email,
-                        phone: phone
+                        firstName,
+                        lastName,
+                        company,
+                        email,
+                        phone
                     }
                 }).then(() => {
                     getActions().getContacts()

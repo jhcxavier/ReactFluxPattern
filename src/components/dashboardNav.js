@@ -31,7 +31,7 @@ const DashboardNav = () => {
     // Material ui styles
     const classes = useStyles();
     // accessing actions in flux
-    const { store, actions } = useContext(Context)
+    const { actions } = useContext(Context)
     // setting paremeter for search contact
     const [search, setSearch] = useState("")
     //inserting the data the should be found on the list of contact

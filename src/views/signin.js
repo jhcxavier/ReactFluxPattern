@@ -57,7 +57,7 @@ export default function SignIn(props) {
     const [state, setState] = useState({ email: "", password: "" })
     // navigation
     const history = useHistory();
-
+    console.log("store", store.contacts)
     // useEffect is being used to re render the page if store.token is not null.
     // It means that the login was successful and move to the next page, also we are updating contacts to have the list of ready.
     useEffect(() => {
@@ -67,6 +67,9 @@ export default function SignIn(props) {
         }
         // [store.token] is passed beacuse each time that token is updated we keep logged in or not.
     }, [store.token])
+
+
+
     return (
 
         <Container component="main" maxWidth="xs">
