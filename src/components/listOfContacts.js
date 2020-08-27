@@ -33,13 +33,13 @@ const ListOfContacts = () => {
                         let type = store.searchCriteria.type
                         let value = store.searchCriteria.valueType;
 
-                        // if (type == "email") {
-                        return contact[type].includes(value);
+                        if (type == "email") {
+                            return contact.email.includes(value);
+                        } else if (type == "phone") {
+                            return contact.phone == Number(value);
+                        }
+                        return true
 
-                        // } else if (type == "phone") {
-                        //     return contact.phone == Number(value);
-                        // }
-                        // return true
                     }).map((contact) => (
                         <Contact key={contact._id} data={contact} />
                     ))}

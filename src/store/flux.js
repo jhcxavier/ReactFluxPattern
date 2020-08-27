@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
         },
         actions: {
             // Function that perform the login on the API
+
             login: (email, password) => {
                 axios.post("http://localhost:4002/login", {
                     email: email,
