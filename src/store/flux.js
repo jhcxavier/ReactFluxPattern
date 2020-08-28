@@ -14,8 +14,8 @@ const getState = ({ getStore, getActions, setStore, setHistory }) => {
 
             login: (email, password) => {
                 axios.post("http://localhost:4002/login", {
-                    email: email,
-                    password: password
+                    email,
+                    password
 
                 }).then((response) => {
                     if (response.status === 200) return response.data;
